@@ -1,0 +1,4 @@
+flexbox: no-2009
+browsers:
+  - "> 0.25%"
+  - "IE > 8"
