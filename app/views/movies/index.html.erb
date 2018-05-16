@@ -1,0 +1,16 @@
+<section class="movies">
+    <h2 class="mt-4">This is all movies which we have for now</h2>
+    <div class="container">
+        <div class="row mt-5">
+        <% @movies.each do |movie| %>
+            <article class="movie col mb-5">
+                <%= image_tag  movie.image_name + '.jpg', width: '300', height: '440', alt: movie.title %>
+                <div class="movie-description">
+                    <p class="mt-4 font-weight-normal h4"><%= movie.title %> <span class="movie-year ml-1"><%= movie.year %></span></p>     
+                    <%= link_to  "Ссылка на фильм", movie.url, class: 'movie-link' %>
+                </div>
+            </article>
+        <% end %>
+        </div>
+    </div>    
+</section>
