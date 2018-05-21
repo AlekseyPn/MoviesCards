@@ -1,0 +1,14 @@
+<div class="container">
+    <%= link_to  "Назад", movies_path, class: 'btn btn-primary mt-3' %>
+    <h1 class="mt-3">Информация о фильме:</h1>
+    <article class="p-5 border border-dark">
+        <p>Название:</p>
+        <p><%= @movie.title %></p>
+        <p>Год:</p>
+        <p><%= @movie.year %></p>
+        <p>Режиссер:</p>
+        <p><%= @movie.director %></p>
+        <p>Дата пересмотра:</p>
+        <p><%= @movie.revision_date %></p>
+    </article>            
+</div>

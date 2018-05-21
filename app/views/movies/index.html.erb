@@ -4,13 +4,12 @@
         <div class="row mt-5">
         <% @movies.each do |movie| %>
             <article class="movie col mb-5">
-                <%= image_tag  movie.image_name + '.jpg', width: '300', height: '440', alt: movie.title %>
-                <div class="movie-description">
                     <p class="mt-4 font-weight-normal h4"><%= movie.title %> <span class="movie-year ml-1"><%= movie.year %></span></p>     
-                    <%= link_to  "Ссылка на фильм", movie.url, class: 'movie-link' %>
-                </div>
+                    <p class="mt-2"><%= movie.director %></p>
+                    <%= link_to  "Посмотреть информацию", movie_path(movie) %>
+                    <%= link_to  "Изменить", edit_movie_path(movie) %>                                        
             </article>
-        <% end %>
+        <% end %>        
         </div>
     </div>    
 </section>

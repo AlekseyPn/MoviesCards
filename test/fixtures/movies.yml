@@ -3,11 +3,11 @@
 one:
   title: MyString
   year: 1
-  url: MyString
-  image_name: MyString
+  director: MyString
+  revision_date: MyString
 
 two:
   title: MyString
   year: 1
-  url: MyString
-  image_name: MyString
+  director: MyString
+  revision_date: MyString
