@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to @movie
     else
-      render "new"
+      render "movies/new"
     end
   end
 
@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to @movie
     else
-      render "edit"
+      render "movies/edit"
     end
   end
 
@@ -29,6 +29,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
+    redirect_to movies_path
   end
 
   def new

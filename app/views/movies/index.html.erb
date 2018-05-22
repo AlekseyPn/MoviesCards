@@ -1,15 +1,20 @@
 <section class="movies">
     <h2 class="mt-4">This is all movies which we have for now</h2>
     <div class="container">
-        <div class="row mt-5">
-        <% @movies.each do |movie| %>
-            <article class="movie col mb-5">
-                    <p class="mt-4 font-weight-normal h4"><%= movie.title %> <span class="movie-year ml-1"><%= movie.year %></span></p>     
-                    <p class="mt-2"><%= movie.director %></p>
-                    <%= link_to  "Посмотреть информацию", movie_path(movie) %>
-                    <%= link_to  "Изменить", edit_movie_path(movie) %>                                        
-            </article>
-        <% end %>        
-        </div>
+        <div class="card-deck">
+            <% @movies.each do |movie| %>
+                <article class="card mb-3" style="min-width: 40%">
+                    <div class="card-body">
+                        <h5 class="card-title">Название: <%= movie.title %></h5>
+                        <p class="card-text">Год производства: <%= movie.year %></p>
+                        <p class="card-text">Режиссёр: <%= movie.director %></p>
+                        <%= link_to  "Посмотреть информацию", movie_path(movie), class: 'card-link' %>
+                        <%= link_to  "Изменить", edit_movie_path(movie), class: 'card-link' %>
+                        <%= link_to "Удалить", movie_path(movie), method: :delete, data:{ confirm: "Вы уверены что хотите удалить фильм?"}, class: 'card-link' %>
+                    </div>
+                    <div class="card-footer">Обновлен: <%= movie.revision_date %></div>                    
+                </article>
+            <% end %>   
+        </div>  
     </div>    
 </section>

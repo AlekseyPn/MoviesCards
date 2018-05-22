@@ -1,4 +1,4 @@
-<%= form_for movie, url: {action: "create"}, html: {class: 'movie-form mt-5'} do |movie_form| %>
+<%= form_for movie, url: {action: action}, html: {class: 'movie-form mt-5'} do |movie_form| %>
 <% if movie.errors.any? %>
     <div class="errors">
         <h2><%= pluralize(movie.errors.count, 'error') %> prohibited this article from being saved:</h2>
@@ -11,15 +11,15 @@
 <% end %>    
 <div class="form-group">
     <%= movie_form.label(:title, 'Название фильма') %>
-    <%= movie_form.text_field :title, class: 'form-control' %>   
+    <%= movie_form.text_field :title, class: field_validation_class(movie, :title) %>
 </div>
 <div class="form-group">
     <%= movie_form.label(:year, 'Год производства') %>
-    <%= movie_form.text_field :year, class: 'form-control' %>
+    <%= movie_form.text_field :year, class: field_validation_class(movie, :year) %>
 </div>
 <div class="from-group">
     <%= movie_form.label(:director, 'Режиссер') %>
-    <%= movie_form.text_field :director, class: 'form-control' %>
+    <%= movie_form.text_field :director, class: field_validation_class(movie, :director) %>
 </div>
 <%= movie_form.submit button_name, class: 'btn btn-primary mt-3' %>
 <% end %>
