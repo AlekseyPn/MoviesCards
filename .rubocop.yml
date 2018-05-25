@@ -1,5 +1,2 @@
 LineLength:
   Enabled: false
-
-PercentLiteralDelimiters:
-  Enabled: false
