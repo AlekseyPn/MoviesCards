@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-05-23 20:07:25 +0500 by fargustian:
 gem "rubocop-github", "~> 0.10.0"
+
+# Added at 2018-05-26 19:08:42 +0500 by fargustian:
+gem "nokogiri", "~> 1.8"
