@@ -2,7 +2,7 @@
 
 # class for work with movies collection
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i(show edit update destroy)
+  before_action :set_movie, only: %i[show update destroy]
   def index
     @movies = Movie.all
   end
@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to @movie
     else
-      render "movies/new"
+      render 'movies/new'
     end
   end
 
@@ -20,12 +20,11 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to @movie
     else
-      render "movies/edit"
+      render 'movies/edit'
     end
   end
 
-  def show
-  end
+  def show; end
 
   def destroy
     @movie.destroy
@@ -37,6 +36,7 @@ class MoviesController < ApplicationController
   end
 
   private
+
   def movie_params
     params.require(:movie).permit(:title, :year, :director)
   end
