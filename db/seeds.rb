@@ -7,27 +7,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "nokogiri"
-require "open-uri"
+require 'nokogiri'
+require 'open-uri'
 
-SITE_URL = "http://www.imdb.com/chart/top"
+SITE_URL = 'http://www.imdb.com/chart/top'
 
 def get_movie_details(link)
   movie_url = get_movie_url link
   movie_page = get_page movie_url
-  title = movie_page.at_css("h1").children.first.text
-  year = movie_page.at_css("#titleYear a").text
+  title = movie_page.at_css('h1').children.first.text
+  year = movie_page.at_css('#titleYear a').text
   director = movie_page.at_css('[itemprop="director"]').text.strip
-  {title: title, year: year, director: director}
+  { title: title, year: year, director: director }
 end
 
 def get_movie_url(movie)
-  href_value = movie.at_css(".titleColumn a")["href"]
+  href_value = movie.at_css('.titleColumn a')['href']
   short_url "http://www.imdb.com/#{href_value}"
 end
 
 def short_url(url)
-  url.split("/?").inject { |left, right| "#{left}/?#{right.split('&').last}" }
+  url.split('/?').inject { |left, right| "#{left}/?#{right.split('&').last}" }
 end
 
 def get_page(url)
@@ -35,11 +35,11 @@ def get_page(url)
 end
 
 def rating_links(page)
-  page.css(".lister-list tr")
+  page.css('.lister-list tr')
 end
 
-movies_for_seed = rating_links(get_page SITE_URL)
-    .first(5)
-    .map { |link| get_movie_details link }
+movies_for_seed = rating_links(get_page(SITE_URL))
+                  .first(5)
+                  .map { |link| get_movie_details link }
 
-movies = Movie.create(movies_for_seed)
+Movie.create(movies_for_seed)
